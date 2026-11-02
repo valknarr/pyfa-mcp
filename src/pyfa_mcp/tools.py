@@ -1,12 +1,12 @@
-"""Register all MCP tools on a FastMCP instance."""
+"""Register all MCP tools on a MCPServer instance."""
 
 from __future__ import annotations
 
 import os
 from typing import Any
 
-from mcp.server.fastmcp import Context, FastMCP
-from mcp.server.fastmcp.exceptions import ToolError
+from mcp.server.mcpserver import Context, MCPServer
+from mcp.server.mcpserver.exceptions import ToolError
 
 from pyfa_mcp import mutations
 from pyfa_mcp.eos_bootstrap import skill_type_ids
@@ -27,7 +27,7 @@ def _raise(exc: Exception) -> None:
     raise ToolError(str(exc)) from exc
 
 
-def register_tools(mcp: FastMCP, store: FitStore) -> None:
+def register_tools(mcp: MCPServer, store: FitStore) -> None:
     # --- Session ---
 
     @mcp.tool(description=f"Create a new fit for ship_type_id. {AGENT_CONTRACT}")

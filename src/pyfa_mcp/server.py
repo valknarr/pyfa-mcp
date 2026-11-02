@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import os
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
+from pyfa_mcp import __version__
 from pyfa_mcp.eos_bootstrap import bootstrap_eos
 from pyfa_mcp.fit_store import FitStore
 from pyfa_mcp.tools import AGENT_CONTRACT, register_tools
@@ -30,7 +31,7 @@ leave the fit unchanged and return a tool error. Soft validation failures
 """.strip()
 
 
-def create_server() -> FastMCP:
+def create_server() -> MCPServer:
     bootstrap_eos()
     store = FitStore(
         max_fits=int(os.environ.get("EOS_MAX_FITS", "100")),
@@ -40,7 +41,7 @@ def create_server() -> FastMCP:
             else None
         ),
     )
-    mcp = FastMCP("pyfa-mcp", instructions=INSTRUCTIONS)
+    mcp = MCPServer("pyfa-mcp", version=__version__, instructions=INSTRUCTIONS)
     register_tools(mcp, store)
     return mcp
 

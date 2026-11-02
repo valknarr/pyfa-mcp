@@ -8,7 +8,7 @@ Consumer playbooks live in the user’s fitting project as `AGENTS.md` — see R
 
 | Path | Role |
 |------|------|
-| `src/pyfa_mcp/server.py` | FastMCP entry (`pyfa-mcp`) |
+| `src/pyfa_mcp/server.py` | MCPServer entry (`pyfa-mcp`) |
 | `src/pyfa_mcp/tools.py` | MCP tools |
 | `src/pyfa_mcp/staticdata.py` | Download / refresh dump |
 | `eos/` | Submodule — bundled into the wheel for `uvx` / PyPI |
